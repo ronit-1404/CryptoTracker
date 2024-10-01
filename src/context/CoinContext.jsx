@@ -18,7 +18,7 @@ const CoinContextPovider = (props) => {
           
           fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd', options)
             .then(response => response.json())
-            .then(response => console.log(response))
+            .then(response => setallcoin(response))
             .catch(err => console.error(err));
     }
     const contextValue = {
