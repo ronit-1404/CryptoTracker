@@ -22,7 +22,7 @@ const Navbar = () => {
         break;
       }
       default:{
-        setCuurency({name: "inr",Symbol: "₹ "})
+        setCuurency({name: "usd",Symbol: "$"})
         break;
       }
       //whenever we will select the dropdown and choose another currency it will  add another request in coincontext file whenever currency dependency changes then it will call fetchallcoinfunction() and it will add anthoer api request with updated currency
