@@ -1,9 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Navbar.css';
 import logo from '../../assets/logo.png';
 import arrowicon from '../../assets/arrow_icon.png';
+import { CoinContext } from '../../context/CoinContext';
 
 const Navbar = () => {
+  const {setCuurency} = useContext(CoinContext)
+
+  const currencyHandeler = (e) => {
+    switch(e.target.value){
+      case "usd":{
+        setCuurency({name: "usd", Symbol: "$"})
+        break;
+      }
+      case "inr":{
+        setCuurency({name: "inr",Symbol: "₹"})
+        break;
+      }
+      case "eur":{
+        setCuurency({name: "eur",Symbol: "€"})
+        break;
+      }
+      default:{
+        setCuurency({name: "inr",Symbol: "₹ "})
+        break;
+      }
+      //whenever we will select the dropdown and choose another currency it will  add another request in coincontext file whenever currency dependency changes then it will call fetchallcoinfunction() and it will add anthoer api request with updated currency
+    }
+  }
   return (
     <div className='navbar'>
         <img src={logo} alt="Logo" className='logo'/>
@@ -14,7 +38,7 @@ const Navbar = () => {
             <li>Blog</li>
         </ul>
         <div className="navright">
-            <select>
+            <select onChange={currencyHandeler}>
                 <option value="usd">USD</option>
                 <option value="euro">EURO</option>
                 <option value="inr">INR</option>
