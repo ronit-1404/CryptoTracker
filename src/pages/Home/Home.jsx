@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Home.css'
+import { CoinContext } from '../../context/CoinContext'
 const Home = () => {
+
+  const {allcoin, currency} = useContext(CoinContext);
+  const [displaycoin, setdisplaycoin] = useState([]);
+
+  //when ever all coin changes it will execute the function(setdisplaycoin) in usestate allcoin is depedency for useeffect function
+  useEffect(()=>{
+    setdisplaycoin(allcoin);
+  },[allcoin])
+
   return (
     <div className='home'> 
       <div className='hero'>
@@ -19,6 +29,13 @@ const Home = () => {
           <p style={{textAlign:"center"}}>24Hr Change</p>
           <p className='market-cap'>MarketCap</p>
         </div>
+        {
+          displaycoin.slice(0,10).map((item, index)=>(
+            <div className="table-layout" key={index}>
+              <p>{item.market_cap_rank}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   )
