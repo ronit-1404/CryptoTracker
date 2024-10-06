@@ -5,6 +5,19 @@ const Home = () => {
 
   const {allcoin, currency} = useContext(CoinContext);
   const [displaycoin, setdisplaycoin] = useState([]);
+  const [input,setinput] = useState('');
+
+  const inputhandler = (e)=>{
+    setinput(e.target.value);
+  }
+
+  const searchhandler = async (e) => {
+    e.preventDefault();
+    const coins = await allcoin.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase())
+    })
+    setdisplaycoin(coins)
+  }
 
   //when ever all coin changes it will execute the function(setdisplaycoin) in usestate allcoin is depedency for useeffect function
   useEffect(()=>{
@@ -16,8 +29,8 @@ const Home = () => {
       <div className='hero'>
         <h1>largest <br/>Crypto Marketplace</h1>
         <p>Welcome..!! Sign up to explore more about cryptos.</p>
-        <form>
-          <input type="text" placeholder='Search crypto..' />
+        <form onSubmit={searchhandler}>
+          <input onChange={inputhandler} value={input} type="text" placeholder='Search crypto..' required />
           <button type='submit'>Search</button>
         </form>
       </div>
