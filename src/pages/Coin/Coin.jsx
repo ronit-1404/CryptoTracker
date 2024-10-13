@@ -45,6 +45,29 @@ const Coin = () => {
         <div className="coin-chart">
           <LineChart historicaldata={historicaldata}/>
         </div>
+
+        <div className="coin-info">
+          <ul>
+            <li>Crypto Market Rank</li>
+            <li>{coindata.market_cap_rank}</li>
+          </ul>
+          <ul>
+            <li>Current Price</li>
+            <li>{currency.symbol}{coindata.market_data.current_price[currency.name].toLocalString()}</li>
+          </ul>
+          <ul>
+            <li>Market Cap</li>
+            <li>{currency.symbol}{coindata.market_data.market_cap[currency.name].toLocalString()}</li>
+          </ul>
+          <ul>
+            <li>24 Hour High</li>
+            <li>{currency.symbol}{coindata.market_data.high_24h[currency.name].toLocalString()}</li>
+          </ul>
+          <ul>
+            <li>24 Hour low</li>
+            <li>{currency.symbol}{coindata.market_data.low_24h[currency.name].toLocalString()}</li>
+          </ul>
+        </div> 
       </div>
     );
   } else {
