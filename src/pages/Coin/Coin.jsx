@@ -23,7 +23,7 @@ const Coin = () => {
   const fetchhistoricaldata = async () => {
     const options = { method: 'GET', headers: { accept: 'application/json' } };
 
-    fetch(`https://pro-api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10`, options)
+    fetch(`https://pro-api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency.name}&days=10&interval=daily`, options)
       .then(response => response.json())
       .then(response => setHistoricaldata(response))
       .catch(err => console.error(err));
