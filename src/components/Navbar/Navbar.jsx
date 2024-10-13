@@ -3,6 +3,7 @@ import './Navbar.css';
 import logo from '../../assets/logo.png';
 import arrowicon from '../../assets/arrow_icon.png';
 import { CoinContext } from '../../context/CoinContext';
+import { Link  } from 'react-router-dom';
 
 const Navbar = () => {
   const {setCuurency} = useContext(CoinContext)
@@ -30,9 +31,10 @@ const Navbar = () => {
   }
   return (
     <div className='navbar'>
+      <link to={'/'}>
         <img src={logo} alt="Logo" className='logo'/>
         <ul>
-            <li>Home</li>
+            <link to={'/'}><li>Home</li></link>
             <li>Features</li>
             <li>Pricing</li>
             <li>Blog</li>
@@ -45,6 +47,7 @@ const Navbar = () => {
             </select>
             <button>Sign up <img src={arrowicon} alt="Arrow Icon" /></button>
         </div>
+        </link>
     </div>
   );
 }
